@@ -16,8 +16,25 @@ std::string convToLower(std::string src)
 std::set<std::string> parseStringToWords(string rawWords)
 {
 
+std::set<std::string> keywords;
+int startOfWord = 0;
+for(unsigned int i = 0; i < rawWords.length(); i++) {
+	if(ispunct(rawWords[i])) { //If there is punctuation at index i
+		string newString = rawWords.substr(startOfWord, i);
+		startOfWord = i+1;
+		if(newString.length() >= 2) {
+			keywords.insert(toupper(newString)); //Insert capitalized string into keywords set
+		}
+	}
+	else if(i == rawWords.length() - 1) { //If at end of list & there is no punctuation
+		string newString = rawWords.substr(startOfWord, i);
+		if(newString.length() >= 2) {
+			keywords.insert(toupper(newString)); //Insert capitalized string into keywords set
+		}
+	}
+}
 
-
+return keywords;
 
 
 
