@@ -14,10 +14,10 @@ MyDataStore::MyDataStore() : DataStore() {
 
 //Adds a product to the data store
 void MyDataStore::addProduct(Product* p) {
-	std::set<std::string> keywordSet = p->keywords();
+	std::set<std::string> keywordSet = p->keywords(); //Create set of Keywords to iterate through
 	std::set<std::string>::iterator itr;
 
-	products.push_back(p); //Push back product to easily recreate database file
+	products.push_back(p); //Push back product to easily recreate database file after QUIT
 
 	for(itr = keywordSet.begin(); itr != keywordSet.end(); itr++) {
 		if(productMap.find(*itr) == productMap.end()) { //Keyword doesn't exist yet
@@ -90,7 +90,7 @@ void MyDataStore::addCart(std::string u, std::string search_hit_string, std::vec
 		return;
 	}
 
-	unsigned int search_hit_number = stoi(search_hit_string);
+	unsigned int search_hit_number = stoi(search_hit_string); //Convert string to integer
 	User* user;
 
 	if(search_hit_number > hits.size()) {

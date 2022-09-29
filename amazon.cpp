@@ -101,40 +101,40 @@ int main(int argc, char* argv[])
             }
 	    /* Add support for other commands here */
             else if ( cmd == "ADD") {
-							string input;
-              vector<string> inputs;
-              while(ss >> input) {
-                  input = convToLower(input);
-                  inputs.push_back(input);
-              }
-							if(!inputs.empty()) {
-								ds.addCart(inputs[0], inputs[1], hits);
-							}
+                string input;
+                vector<string> inputs;
+                while(ss >> input) {
+                    input = convToLower(input);
+                    inputs.push_back(input);
+                }
+                if(!inputs.empty()) {
+                    ds.addCart(inputs[0], inputs[1], hits);
+                }
             }
 
             else if ( cmd == "VIEWCART") {
-							string user;
-              vector<string> users;
-              while(ss >> user) {
-                  user = convToLower(user);
-                  users.push_back(user);
-              }
-							if(!users.empty()) {
-								ds.viewCart(users[0]);
-							}
+                string user;
+                vector<string> users;
+                while(ss >> user) {
+                    user = convToLower(user);
+                    users.push_back(user);
+                }
+                if(!users.empty()) {
+                    ds.viewCart(users[0]);
+                }
             }
 
             else if ( cmd == "BUYCART") {
-							string user;
-              vector<string> users;
-              while(ss >> user) {
-                  user = convToLower(user);
-                  users.push_back(user);
-              }
-							if(!users.empty()) {
-								cout << users[0] << endl;
-								ds.buyCart(users[0]);
-							}
+				string user;
+                vector<string> users;
+                while(ss >> user) {
+                    user = convToLower(user);
+                    users.push_back(user);
+                }
+                if(!users.empty()) {
+                    cout << users[0] << endl;
+                    ds.buyCart(users[0]);
+                }
             }
             		
             else {
