@@ -27,7 +27,7 @@ string Movie::getRating() const
 
 string Movie::displayString() const {
 	string display;
-	display = getName() + "\n" + "Genre: " + getGenre() + "Rating:" + getRating() + "\n" + to_string(getPrice()) + to_string(getQty()) + "Left";
+	display = getName() + "\n" + "Genre: " + getGenre() + " Rating: " + getRating() + "\n" + to_string(getPrice()) + "\n" + to_string(getQty()) + " Left";
 	return display;
 }
 
@@ -35,6 +35,9 @@ set<string> Movie::keywords() const {
 	set<string> returnSet;
 
 	set<string> temp = parseStringToWords(getGenre());
+	returnSet.insert(temp.begin(), temp.end());
+
+	temp = parseStringToWords(getName());
 	returnSet.insert(temp.begin(), temp.end());
 
 	return returnSet;

@@ -14,7 +14,7 @@ template <typename T>
 std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2) //And
 {
 	std::set<T> returnSet;
-	std::set<int>::iterator itr;
+	typename std::set<T>::iterator itr;
 	for(itr = s1.begin(); itr != s1.end(); itr++) { //Assumes s1 is the keywords inputted
 		if(s2.find(*itr) != s2.end()) {
 			returnSet.insert(*itr);
@@ -28,13 +28,13 @@ std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2) //And
 template <typename T>
 std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2) //Or
 {
-	std::set<int>::iterator itr;
-
+	typename std::set<T>::iterator itr;
+	std::set<T> returnSet = s2;
 	for(itr = s1.begin(); itr != s1.end(); itr++) {
-		s2.insert(*itr);
+		returnSet.insert(*itr);
 	}
 
-	return s1;
+	return returnSet;
 
 }
 

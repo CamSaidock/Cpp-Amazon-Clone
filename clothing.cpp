@@ -24,12 +24,12 @@ string Clothing::getBrand() const
 
 string Clothing::displayString() const {
 	string display;
-	display = getName() + "\n" + "Size: " + getSize() + "Brand:" + getBrand() + "\n" + to_string(getPrice()) + to_string(getQty()) + "Left";
+	display = getName() + "\n" + "Size: " + getSize() + " Brand: " + getBrand() + "\n" + to_string(getPrice()) + "\n" + to_string(getQty()) + " Left";
 	return display;
 }
 
 set<string> Clothing::keywords() const {
-	set<string> returnSet ;
+	set<string> returnSet;
 
 	set<string> temp = parseStringToWords(getBrand());
 	returnSet.insert(temp.begin(), temp.end());

@@ -44,6 +44,6 @@ protected:
     double price_;
     int qty_;
     std::string category_;
-
 };
+
 #endif
