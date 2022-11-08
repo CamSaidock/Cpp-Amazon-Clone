@@ -24,7 +24,11 @@ string Clothing::getBrand() const
 
 string Clothing::displayString() const {
 	string display;
-	display = getName() + "\n" + "Size: " + getSize() + " Brand: " + getBrand() + "\n" + to_string(getPrice()) + "\n" + to_string(getQty()) + " Left";
+
+	ostringstream priceFormatted;
+	priceFormatted << fixed << setprecision(2) << getPrice();
+
+	display = getName() + "\n" + "Size: " + getSize() + " Brand: " + getBrand() + "\n" + priceFormatted.str() + " " + to_string(getQty()) + " left.";
 	return display;
 }
 
@@ -41,5 +45,5 @@ set<string> Clothing::keywords() const {
 }
 
 void Clothing::dump(ostream& os) const {
-	os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << size_ << "\n" << brand_ << endl;
+	os << category_ << "\n" << name_ << "\n" << fixed << setprecision(2) << price_ << "\n" << qty_ << "\n" << size_ << "\n" << brand_ << endl;
 }

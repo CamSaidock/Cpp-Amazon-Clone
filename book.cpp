@@ -23,9 +23,14 @@ string Book::getISBN() const
 }
 
 
+
 string Book::displayString() const {
 	string display;
-	display = getName() + "\n" + "Author: " + getAuthor() + " ISBN: " + getISBN() + "\n" + to_string(getPrice()) + "\n" + to_string(getQty()) + " Left";
+
+	ostringstream priceFormatted;
+	priceFormatted << fixed << setprecision(2) << getPrice();
+
+	display = getName() + "\n" + "Author: " + getAuthor() + " ISBN: " + getISBN() + "\n" + priceFormatted.str() + " " + to_string(getQty()) + " left.";
 	return display;
 }
 
@@ -44,5 +49,5 @@ set<string> Book::keywords() const {
 }
 
 void Book::dump(ostream& os) const {
-	os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << isbn_ << "\n" << author_ << endl;
+	os << category_ << "\n" << name_ << "\n" << fixed << setprecision(2) << price_ << "\n" << qty_ << "\n" << isbn_ << "\n" << author_ << endl;
 }

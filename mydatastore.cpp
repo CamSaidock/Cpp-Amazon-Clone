@@ -94,12 +94,12 @@ void MyDataStore::addCart(std::string u, std::string search_hit_string, std::vec
 	User* user;
 
 	if(search_hit_number > hits.size()) {
-		cout << "Enter valid hit number!" << endl;
+		cout << "Invalid request" << endl;
 		return;
 	}
 
 	if(userMap.find(u) == userMap.end()) {
-		cout << "Error, user doesn't exist" << endl;
+		cout << "Invalid request" << endl;
 		return;
 	}
 	else {
@@ -113,6 +113,12 @@ void MyDataStore::viewCart(std::string u) {
 	//Search for user's cart
 	//In User's cart, go through and display every product.
 	User* user;
+
+	if(userMap.find(u) == userMap.end()) {
+		cout << "Invalid username" << endl;
+		return;
+	}
+
 	user = userMap.find(u)->second;
 	vector<Product*> items = (userCart[user]);
 
@@ -121,9 +127,12 @@ void MyDataStore::viewCart(std::string u) {
     return;
 	}
 
+	int itemsNumber = 1;
 	for(vector<Product*>::iterator it = items.begin(); it != items.end(); ++it) {
+		cout << "Item " << setw(3) << itemsNumber << endl;
     cout << (*it)->displayString() << endl;
     cout << endl;
+		itemsNumber++;
   }
 }
 
@@ -133,6 +142,12 @@ void MyDataStore::buyCart(std::string u) {
 	//If you don't have enough money, then add to a new cart, buy other items
 
 	User* user;
+
+	if(userMap.find(u) == userMap.end()) {
+		cout << "Invalid username" << endl;
+		return;
+	}
+	
 	user = userMap.find(u)->second;
 	vector<Product*> items = (userCart[user]);
 

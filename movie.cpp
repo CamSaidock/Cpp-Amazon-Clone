@@ -27,7 +27,11 @@ string Movie::getRating() const
 
 string Movie::displayString() const {
 	string display;
-	display = getName() + "\n" + "Genre: " + getGenre() + " Rating: " + getRating() + "\n" + to_string(getPrice()) + "\n" + to_string(getQty()) + " Left";
+
+	ostringstream priceFormatted;
+	priceFormatted << fixed << setprecision(2) << getPrice();
+
+	display = getName() + "\n" + "Genre: " + getGenre() + " Rating: " + getRating() + "\n" + priceFormatted.str() + " " + to_string(getQty()) + " left.";
 	return display;
 }
 
@@ -44,5 +48,5 @@ set<string> Movie::keywords() const {
 }
 
 void Movie::dump(ostream& os) const {
-	os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << genre_ << "\n" << rating_ << endl;
+	os << category_ << "\n" << name_ << "\n" << fixed << setprecision(2) << price_ << "\n" << qty_ << "\n" << genre_ << "\n" << rating_ << endl;
 }
